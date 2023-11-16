@@ -6,23 +6,23 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="{{ url('/especialidades') }}">
+        <a class="nav-link " href="#">
             <i class="ni ni-briefcase-24 text-blue"></i>Gestionar Postulantes
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="./examples/maps.html">
+        <a class="nav-link " href="#">
             <i class="ni ni-tv-2 text-danger"></i> Roles y Permisos
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="./examples/profile.html">
+        <a class="nav-link " href="#">
             <i class="ni ni-briefcase-24 text-blue"></i> Gestionar Empleados
         </a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link " href="./examples/profile.html">
+        <a class="nav-link " href="#">
             <i class="fas fa-procedures text-warning"></i> Asistencia
         </a>
     </li>
@@ -34,7 +34,7 @@
     </li>
   
     <li class="nav-item">
-        <a class="nav-link " href="./examples/profile.html">
+        <a class="nav-link " href="{{ url('/cargos') }}">
             <i class="fas fa-procedures text-warning"></i> Gestionar Cargos
         </a>
     </li>

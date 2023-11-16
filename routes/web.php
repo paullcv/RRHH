@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CargoController;
 use App\Http\Controllers\DepartmentController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//CRUD Departamentos
 Route::resource('departments', DepartmentController::class);
+
+//CRUD Cargos
+Route::resource('cargos', CargoController::class);
