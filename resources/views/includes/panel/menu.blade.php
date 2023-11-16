@@ -7,7 +7,7 @@
     </li>
     <li class="nav-item">
         <a class="nav-link " href="{{ url('/especialidades') }}">
-            <i class="ni ni-briefcase-24 text-blue"></i> Gestionar Empleados
+            <i class="ni ni-briefcase-24 text-blue"></i>Gestionar Postulantes
         </a>
     </li>
     <li class="nav-item">
@@ -17,7 +17,7 @@
     </li>
     <li class="nav-item">
         <a class="nav-link " href="./examples/profile.html">
-            <i class="ni ni-briefcase-24 text-blue"></i> Gestionar CV
+            <i class="ni ni-briefcase-24 text-blue"></i> Gestionar Empleados
         </a>
     </li>
 
@@ -27,17 +27,17 @@
         </a>
     </li>
   
-    {{-- <li class="nav-item">
-        <a class="nav-link " href="./examples/profile.html">
-            <i class="ni ni-briefcase-24 text-blue"></i> Rendimiento
+    <li class="nav-item">
+        <a class="nav-link " href="{{ url('/departments') }}">
+            <i class="ni ni-briefcase-24 text-blue"></i> Gestionar Departamentos
         </a>
     </li>
   
     <li class="nav-item">
         <a class="nav-link " href="./examples/profile.html">
-            <i class="fas fa-procedures text-warning"></i> Opcion
+            <i class="fas fa-procedures text-warning"></i> Gestionar Cargos
         </a>
-    </li> --}}
+    </li>
   
   
     <li class="nav-item">
