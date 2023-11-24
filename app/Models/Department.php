@@ -10,4 +10,8 @@ class Department extends Model
     use HasFactory;
 
     protected $fillable = ['nombre', 'descripcion'];
+
+    public function cargos(){
+        return $this->hasMany(Cargo::class);
+    }
 }

@@ -9,4 +9,15 @@ class Cargo extends Model
 {
     use HasFactory;
     protected $fillable = ['nombre', 'requisitos'];
+
+
+    public function empleados(){
+        return $this->hasMany(User::class);
+    }
+
+    public function departamento(){
+        return $this->belongsTo(Department::class);
+    }
+
+    
 }
