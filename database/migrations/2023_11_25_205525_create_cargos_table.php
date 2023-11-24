@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->text('requisitos')->nullable();
+            $table->string('tipo');
+            $table->unsignedBigInteger('id_horario');
+            $table->foreign('id_horario')->references('id')->on('horarios')->onDelete('cascade');
             $table->timestamps();
         });
     }

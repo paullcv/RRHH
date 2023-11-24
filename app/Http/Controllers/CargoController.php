@@ -3,26 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cargo;
+use App\Models\Horario;
 use Illuminate\Http\Request;
 
 class CargoController extends Controller
 {
+  
     public function index()
-    {
-        $cargos = Cargo::all();
-        return view('cargos.index', compact('cargos'));
-    }
+{
+    $cargos = Cargo::with(['horario', 'horario.jornada'])->get();
+    return view('cargos.index', compact('cargos'));
+}
+
 
     public function create()
     {
-        return view('cargos.create');
+        $horarios = Horario::all();
+        return view('cargos.create', compact('horarios'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'nombre' => 'required',
-            'requisitos' => 'nullable',
+            'tipo' => 'required',
+            'id_horario' => 'required|exists:horarios,id' // Asegura que el id_horario exista en la tabla de horarios
         ]);
 
         Cargo::create($request->all());
@@ -32,14 +37,16 @@ class CargoController extends Controller
 
     public function edit(Cargo $cargo)
     {
-        return view('cargos.edit', compact('cargo'));
+        $horarios = Horario::all();
+        return view('cargos.edit', compact('cargo', 'horarios'));
     }
 
     public function update(Request $request, Cargo $cargo)
     {
         $request->validate([
             'nombre' => 'required',
-            'requisitos' => 'nullable',
+            'tipo' => 'required',
+            'id_horario' => 'required|exists:horarios,id' // Asegura que el id_horario exista en la tabla de horarios
         ]);
 
         $cargo->update($request->all());
