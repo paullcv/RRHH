@@ -6,6 +6,7 @@ use App\Models\Empleado;
 use App\Models\Cargo;
 use App\Models\User;
 use App\Models\Department;
+use Illuminate\Validation\Rule;
 
 class EmpleadoController extends Controller
 {
@@ -27,12 +28,12 @@ class EmpleadoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'ci' => 'required|numeric|unique:empleados',
+            'ci' => 'required|numeric|digits_between:7,8|unique:empleados,ci',
             'nombre' => 'required|string',
             'direccion' => 'required|string',
             'fecha_nacimiento' => 'required|date',
             'sexo' => 'required|string',
-            'telefono' => 'required|string',
+            'telefono' => 'required|numeric|digits_between:7,8|unique:empleados,telefono',
             'cargo_id' => 'required|exists:cargos,id',
             'user_id' => 'required|exists:users,id',
         ]);
@@ -53,12 +54,12 @@ class EmpleadoController extends Controller
     public function update(Request $request, Empleado $empleado)
     {
         $request->validate([
-            'ci' => 'required|numeric|unique:empleados,ci,' . $empleado->id,
+            'ci' => 'required|numeric|digits_between:7,8|unique:empleados,ci',
             'nombre' => 'required|string',
             'direccion' => 'required|string',
             'fecha_nacimiento' => 'required|date',
             'sexo' => 'required|string',
-            'telefono' => 'required|string',
+            'telefono' => 'required|numeric|digits_between:7,8|unique:empleados,telefono',
             'cargo_id' => 'required|exists:cargos,id',
             'user_id' => 'required|exists:users,id',
         ]);

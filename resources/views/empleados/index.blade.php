@@ -14,11 +14,15 @@
         </div>
         <div class="card-body">
             @if (session('success'))
-                <div class="alert alert-success" role="alert">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
             @endif
         </div>
+        
 
         @if ($empleados->isEmpty())
             <div class="alert alert-warning" role="alert">
@@ -53,7 +57,8 @@
                                     <form action="{{ route('empleados.destroy', $empleado->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <a href="{{ route('empleados.edit', $empleado->id) }}" class="btn btn-sm btn-primary">Editar</a>
+                                        <a href="{{ route('empleados.edit', $empleado->id) }}"
+                                            class="btn btn-sm btn-primary">Editar</a>
                                         <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                                     </form>
                                 </td>

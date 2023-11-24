@@ -31,21 +31,33 @@
                 <div class="form-group">
                     <label for="ci">CI:</label>
                     <input type="text" name="ci" id="ci" class="form-control" value="{{ old('ci', $empleado->ci) }}" required>
+                    @error('ci')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
                     <input type="text" name="nombre" id="nombre" class="form-control" value="{{ old('nombre', $empleado->nombre) }}" required>
+                    @error('nombre')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="direccion">Dirección:</label>
                     <input type="text" name="direccion" id="direccion" class="form-control" value="{{ old('direccion', $empleado->direccion) }}" required>
+                    @error('direccion')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
                     <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" value="{{ old('fecha_nacimiento', $empleado->fecha_nacimiento) }}" required>
+                    @error('fecha_nacimiento')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
@@ -54,11 +66,17 @@
                         <option value="masculino" {{ old('sexo', $empleado->sexo) === 'masculino' ? 'selected' : '' }}>Masculino</option>
                         <option value="femenino" {{ old('sexo', $empleado->sexo) === 'femenino' ? 'selected' : '' }}>Femenino</option>
                     </select>
+                    @error('sexo')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="telefono">Teléfono:</label>
                     <input type="tel" name="telefono" id="telefono" class="form-control" value="{{ old('telefono', $empleado->telefono) }}" required>
+                    @error('telefono')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
@@ -68,6 +86,9 @@
                             <option value="{{ $cargo->id }}" {{ old('cargo_id', $empleado->cargo_id) == $cargo->id ? 'selected' : '' }}>{{ $cargo->nombre }}</option>
                         @endforeach
                     </select>
+                    @error('cargo_id')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
@@ -77,6 +98,9 @@
                             <option value="{{ $user->id }}" {{ old('user_id', $empleado->user_id) == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
                         @endforeach
                     </select>
+                    @error('user_id')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <button type="submit" class="btn btn-primary">Guardar Cambios</button>
