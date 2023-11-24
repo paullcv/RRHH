@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->time('hora_entrada');
             $table->time('hora_salida');
-            $table->unsignedBigInteger('id_jornada');
-            $table->foreign('id_jornada')->references('id')->on('jornadas')->onDelete('cascade');
             $table->timestamps();
         });
     }

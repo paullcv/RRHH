@@ -31,6 +31,9 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Tipo</th>
+                            <th scope="col">Horario</th>
+                            <th scope="col">Cantidad Horas</th>
+
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -39,6 +42,9 @@
                             <tr>
                                 <td>{{ $jornada->id }}</td>
                                 <td>{{ $jornada->tipo }}</td>
+                                <td>{{ $jornada->horario->hora_entrada }} to {{ $jornada->horario->hora_salida }}</td>
+                                <td>{{ $jornada->cantidad_horas }}</td>
+
                                 <td>
                                     <a href="{{ route('jornadas.edit', $jornada->id) }}"
                                        class="btn btn-sm btn-primary">Editar</a>
