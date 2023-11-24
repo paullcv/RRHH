@@ -12,15 +12,13 @@ class HorarioController extends Controller
 
     public function index()
     {
-        $horarios = Horario::with('jornada')->get();
+        $horarios = Horario::all();
         return view('horarios.index', compact('horarios'));
     }
 
     public function create()
     {
-        // Aquí puedes cargar las jornadas para utilizarlas en el formulario de creación
-        $jornadas = Jornada::all(); // Esto supone que ya tienes el modelo Jornada definido
-        return view('horarios.create', compact('jornadas'));
+        return view('horarios.create');
     }
 
     public function store(Request $request)
@@ -28,7 +26,6 @@ class HorarioController extends Controller
         $request->validate([
             'hora_entrada' => 'required',
             'hora_salida' => 'required',
-            'id_jornada' => 'required',
         ]);
 
         Horario::create($request->all());
@@ -38,9 +35,7 @@ class HorarioController extends Controller
 
     public function edit(Horario $horario)
     {
-        // Aquí puedes cargar las jornadas para utilizarlas en el formulario de edición
-        $jornadas = Jornada::all(); // Esto supone que ya tienes el modelo Jornada definido
-        return view('horarios.edit', compact('horario', 'jornadas'));
+        return view('horarios.edit', compact('horario'));
     }
 
     public function update(Request $request, Horario $horario)
@@ -48,7 +43,6 @@ class HorarioController extends Controller
         $request->validate([
             'hora_entrada' => 'required',
             'hora_salida' => 'required',
-            'id_jornada' => 'required',
         ]);
 
         $horario->update($request->all());

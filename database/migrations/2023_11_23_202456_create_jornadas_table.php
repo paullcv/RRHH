@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('jornadas', function (Blueprint $table) {
             $table->id();
             $table->string('tipo');
+            $table->integer('cantidad_horas');
+            $table->unsignedBigInteger('horario_id')->nullable();
+            $table->foreign('horario_id')->references('id')->on('horarios')->onDelete('cascade');
             $table->timestamps();
         });
     }

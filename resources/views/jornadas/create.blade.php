@@ -1,4 +1,4 @@
-@extends('layouts.panel') {{-- Asegúrate de que la estructura del layout sea adecuada --}}
+@extends('layouts.panel')
 
 @section('content')
     <div class="card shadow">
@@ -23,6 +23,16 @@
                 <div class="form-group">
                     <label for="tipo">Tipo:</label>
                     <input type="text" class="form-control" id="tipo" name="tipo" value="{{ old('tipo') }}">
+                </div>
+               
+                <div class="form-group">
+                    <label for="horario_id">Seleccionar Horario:</label>
+                    <select name="horario_id" id="horario_id" class="form-control" required>
+                        <option value="">Seleccionar un horario</option>
+                        @foreach ($horarios as $horario)
+                            <option value="{{ $horario->id }}">{{ $horario->hora_entrada }} - {{ $horario->hora_salida }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Crear Jornada</button>
             </form>

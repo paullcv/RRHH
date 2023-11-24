@@ -32,7 +32,6 @@
                             <th scope="col">ID</th>
                             <th scope="col">Hora de Entrada</th>
                             <th scope="col">Hora de Salida</th>
-                            <th scope="col">ID de Jornada</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -42,8 +41,6 @@
                                 <td>{{ $horario->id }}</td>
                                 <td>{{ $horario->hora_entrada }}</td>
                                 <td>{{ $horario->hora_salida }}</td>
-                                <td>{{ $horario->jornada->tipo }}</td>
-                                {{-- <td>{{ $horario->id_jornada }}</td> --}}
                                 <td>
                                     <a href="{{ route('horarios.edit', $horario->id) }}"
                                        class="btn btn-sm btn-primary">Editar</a>
