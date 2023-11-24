@@ -26,7 +26,19 @@
             <i class="fas fa-procedures text-warning"></i> Asistencia
         </a>
     </li>
-  
+    
+    <li class="nav-item">
+        <a class="nav-link " href="{{ url('/horarios') }}">
+            <i class="ni ni-briefcase-24 text-blue"></i> Gestionar Horario
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link " href="{{ url('/jornadas') }}">
+            <i class="ni ni-briefcase-24 text-blue"></i> Gestionar Jornadas
+        </a>
+    </li>
+
     <li class="nav-item">
         <a class="nav-link " href="{{ url('/departments') }}">
             <i class="ni ni-briefcase-24 text-blue"></i> Gestionar Departamentos

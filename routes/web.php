@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\CargoController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\HorarioController;
+use App\Http\Controllers\JornadaController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +31,9 @@ Route::resource('departments', DepartmentController::class);
 
 //CRUD Cargos
 Route::resource('cargos', CargoController::class);
+
+//CRUD Jornada
+Route::resource('jornadas', JornadaController::class);
+
+//CRUD Horario
+Route::resource('horarios', HorarioController::class);
