@@ -21,4 +21,14 @@ class Empleado extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function asistencias()
+    {
+        return $this->hasMany(Asistencia::class);
+    }
+
+    public function nominas()
+    {
+        return $this->hasMany(Nomina::class);
+    }
 }

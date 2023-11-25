@@ -19,4 +19,16 @@ class Cargo extends Model
     {
         return $this->belongsTo(Jornada::class);
     }
+
+    public function requisito(){
+        return $this->hasOne(Requisito::class);
+    }
+
+    public function postulantes(){
+        return $this->hasMany(Postulante::class);
+    }
+
+    public function empleados(){
+        return $this->hasMany(Empleado::class);
+    }
 }

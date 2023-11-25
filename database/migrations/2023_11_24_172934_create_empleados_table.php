@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('fecha_nacimiento');
             $table->string('sexo');
             $table->string('telefono');
+            $table->boolean('estado')->default(true);
             $table->unsignedBigInteger('cargo_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
