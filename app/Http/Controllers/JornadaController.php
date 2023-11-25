@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Horario;
 use App\Models\Jornada;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class JornadaController extends Controller
      */
     public function index()
     {
-        $jornadas = Jornada::all();
+        $jornadas = Jornada::with('horario')->get();
         return view('jornadas.index', compact('jornadas'));
     }
     /**
@@ -20,7 +21,8 @@ class JornadaController extends Controller
      */
     public function create()
     {
-        return view('jornadas.create');
+        $horarios = Horario::all();
+        return view('jornadas.create', compact('horarios'));
     }
 
     /**
@@ -30,9 +32,26 @@ class JornadaController extends Controller
     {
         $request->validate([
             'tipo' => 'required',
+            'horario_id' => 'required',
         ]);
 
-        Jornada::create($request->all());
+        $horario = Horario::find($request->horario_id);
+
+        if (!$horario) {
+            // Manejar si no se encuentra el horario
+            
+        }
+
+        // Calcular la diferencia de tiempo para obtener la cantidad de horas
+        $diferenciaHoras = strtotime($horario->hora_salida) - strtotime($horario->hora_entrada);
+        $cantidadHoras = round($diferenciaHoras / 3600); // 3600 segundos en una hora
+
+        // Crear la jornada con la cantidad de horas calculada
+        Jornada::create([
+            'tipo' => $request->tipo,
+            'cantidad_horas' => $cantidadHoras,
+            'horario_id' => $request->horario_id,
+        ]);
 
         return redirect()->route('jornadas.index')->with('success', 'Jornada creada con éxito.');
     }
@@ -42,7 +61,8 @@ class JornadaController extends Controller
      */
     public function edit(Jornada $jornada)
     {
-        return view('jornadas.edit', compact('jornada'));
+        $horarios = Horario::all();
+        return view('jornadas.edit', compact('jornada', 'horarios'));
     }
 
     /**
@@ -52,9 +72,22 @@ class JornadaController extends Controller
     {
         $request->validate([
             'tipo' => 'required',
+            'horario_id' => 'required',
         ]);
 
-        $jornada->update($request->all());
+        $horario = Horario::find($request->horario_id);
+        if (!$horario) {
+            // Manejar si no se encuentra el horario
+        }
+
+        // Calcular la diferencia de tiempo para obtener la cantidad de horas
+        $diferenciaHoras = strtotime($horario->hora_salida) - strtotime($horario->hora_entrada);
+        $cantidadHoras = round($diferenciaHoras / 3600); // 3600 segundos en una hora
+        $jornada->update([
+            'tipo' => $request->tipo,
+            'cantidad_horas' => $cantidadHoras,
+            'horario_id' => $request->horario_id,
+        ]);
 
         return redirect()->route('jornadas.index')->with('success', 'Jornada actualizada con éxito.');
     }
@@ -68,6 +101,4 @@ class JornadaController extends Controller
 
         return redirect()->route('jornadas.index')->with('success', 'Jornada eliminada con éxito.');
     }
-
-    
 }

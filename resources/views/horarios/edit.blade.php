@@ -26,16 +26,7 @@
                     <label for="hora_salida">Hora de Salida:</label>
                     <input type="time" class="form-control" id="hora_salida" name="hora_salida" value="{{ $horario->hora_salida }}">
                 </div>
-                <div class="form-group">
-                    <label for="id_jornada">Jornada:</label>
-                    <select class="form-control" id="id_jornada" name="id_jornada">
-                        @foreach($jornadas as $jornada)
-                            <option value="{{ $jornada->id }}" {{ $horario->id_jornada == $jornada->id ? 'selected' : '' }}>
-                                {{ $jornada->tipo }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
+             
                 <button type="submit" class="btn btn-primary">Guardar cambios</button>
             </form>
         </div>

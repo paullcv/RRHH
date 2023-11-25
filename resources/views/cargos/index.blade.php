@@ -22,31 +22,31 @@
 
         @if ($cargos->isEmpty())
             <div class="alert alert-warning" role="alert">
-                Sin cargos creados por el momento.
+                No hay cargos registrados.
             </div>
         @else
             <div class="table-responsive">
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">Id</th>
+                            <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Requisitos</th>
-                            <th scope="col">Opciones</th>
+                            <th scope="col">Departamento</th>
+                            <th scope="col">vacante</th>
+
+                            <th scope="col">Jornada</th>
+                            <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($cargos as $cargo)
                             <tr>
-                                <th scope="row">
-                                    {{ $cargo->id }}
-                                </th>
-                                <td>
-                                    {{ $cargo->nombre }}
-                                </td>
-                                <td>
-                                    {{ $cargo->requisitos }}
-                                </td>
+                                <td>{{ $cargo->id }}</td>
+                                <td>{{ $cargo->nombre }}</td>
+                                <td>{{ $cargo->departamento->nombre }}</td>
+                                <td>{{ $cargo->existe_vacante ? 'Sí' : 'No' }}</td>
+
+                                <td>{{ $cargo->jornada->tipo }}</td>
                                 <td>
                                     <form action="{{ route('cargos.destroy', $cargo->id) }}" method="POST">
                                         @csrf
