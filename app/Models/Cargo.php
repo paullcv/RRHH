@@ -8,16 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Cargo extends Model
 {
     use HasFactory;
-    protected $fillable = ['nombre', 'requisitos'];
+    protected $fillable = ['nombre', 'existe_vacante', 'departamento_id', 'jornada_id'];
 
-
-    public function empleados(){
-        return $this->hasMany(User::class);
-    }
-
-    public function departamento(){
+    public function departamento()
+    {
         return $this->belongsTo(Department::class);
     }
 
+    public function jornada()
+    {
+        return $this->belongsTo(Jornada::class);
+    }
+
+  
     
 }
