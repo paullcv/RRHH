@@ -53,6 +53,8 @@
                                         @method('DELETE')
                                         <a href="{{ route('cargos.edit', $cargo->id) }}" class="btn btn-sm btn-primary">Editar</a>
                                         <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro?')">Eliminar</button>
+                                        <a href="{{ route('cargos.requisitos.index', $cargo->id) }}" class="btn btn-sm btn-info">Ver Requisitos</a>
+
                                     </form>
                                 </td>
                             </tr>
