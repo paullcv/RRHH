@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('cargos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->text('requisitos')->nullable();
-            $table->string('tipo');
-            $table->unsignedBigInteger('id_horario');
-            $table->foreign('id_horario')->references('id')->on('horarios')->onDelete('cascade');
+            $table->boolean('existe_vacante');
+            $table->unsignedBigInteger('departamento_id');
+            $table->foreign('departamento_id')->references('id')->on('departments')->onDelete('cascade');
+            $table->unsignedBigInteger('jornada_id');
+            $table->foreign('jornada_id')->references('id')->on('jornadas')->onDelete('cascade');
             $table->timestamps();
         });
     }

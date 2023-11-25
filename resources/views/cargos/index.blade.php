@@ -31,9 +31,9 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Requisitos</th>
-                            <th scope="col">Tipo</th>
-                            <th scope="col">Horario </th>
+                            <th scope="col">Departamento</th>
+                            <th scope="col">vacante</th>
+
                             <th scope="col">Jornada</th>
                             <th scope="col">Acciones</th>
                         </tr>
@@ -43,10 +43,10 @@
                             <tr>
                                 <td>{{ $cargo->id }}</td>
                                 <td>{{ $cargo->nombre }}</td>
-                                <td>{{ $cargo->requisitos }}</td>
-                                <td>{{ $cargo->tipo }}</td>
-                                <td>{{ $cargo->horario->hora_entrada }} to {{ $cargo->horario->hora_salida }}</td>
-                                <td>{{ $cargo->horario->jornada->tipo }}</td>
+                                <td>{{ $cargo->departamento->nombre }}</td>
+                                <td>{{ $cargo->existe_vacante ? 'Sí' : 'No' }}</td>
+
+                                <td>{{ $cargo->jornada->tipo }}</td>
                                 <td>
                                     <form action="{{ route('cargos.destroy', $cargo->id) }}" method="POST">
                                         @csrf

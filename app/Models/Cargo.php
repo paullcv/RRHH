@@ -8,9 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Cargo extends Model
 {
     use HasFactory;
-    protected $fillable = ['nombre', 'requisitos', 'tipo', 'id_horario'];
-    public function horario()
+    protected $fillable = ['nombre', 'existe_vacante', 'departamento_id', 'jornada_id'];
+
+    public function departamento()
     {
-        return $this->belongsTo(Horario::class, 'id_horario');
+        return $this->belongsTo(Department::class);
+    }
+
+    public function jornada()
+    {
+        return $this->belongsTo(Jornada::class);
     }
 }

@@ -1,11 +1,14 @@
-@extends('layouts.panel') {{-- Asegúrate de que la estructura del layout sea adecuada --}}
+@extends('layouts.panel')
 
 @section('content')
     <div class="card shadow">
         <div class="card-header border-0">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="mb-0">Crear Nuevo Cargo</h3>
+                    <h3 class="mb-0">Crear Cargo</h3>
+                </div>
+                <div class="col text-right">
+                    <a href="{{ route('cargos.index') }}" class="btn btn-sm btn-primary">Volver a la Lista</a>
                 </div>
             </div>
         </div>
@@ -18,26 +21,36 @@
             <form action="{{ route('cargos.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="nombre">Nombre:</label>
+                    <label for="nombre">Nombre del Cargo:</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}">
                 </div>
+                <!-- Para Crear -->
                 <div class="form-group">
-                    <label for="requisitos">Requisitos:</label>
-                    <textarea class="form-control" id="requisitos" name="requisitos">{{ old('requisitos') }}</textarea>
+                    <label for="existe_vacante">¿Existe vacante?</label><br>
+                    <input type="checkbox" id="existe_vacante" name="existe_vacante" value="1">
+                    <input type="hidden" name="existe_vacante" value="0">
                 </div>
+
+
+
                 <div class="form-group">
-                    <label for="tipo">Tipo:</label>
-                    <input type="text" class="form-control" id="tipo" name="tipo" value="{{ old('tipo') }}">
-                </div>
-                <div class="form-group">
-                    <label for="id_horario">Horario:</label>
-                    <select class="form-control" id="id_horario" name="id_horario">
-                        @foreach($horarios as $horario)
-                            <option value="{{ $horario->id }}">{{ $horario->hora_entrada }} to {{ $horario->hora_salida }}</option>
+                    <label for="departamento_id">Departamento:</label>
+                    <select name="departamento_id" id="departamento_id" class="form-control">
+                        <option value="">Seleccionar departamento</option>
+                        @foreach ($departamentos as $departamento)
+                            <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
                         @endforeach
                     </select>
                 </div>
-                
+                <div class="form-group">
+                    <label for="jornada_id">Jornada:</label>
+                    <select name="jornada_id" id="jornada_id" class="form-control">
+                        <option value="">Seleccionar jornada</option>
+                        @foreach ($jornadas as $jornada)
+                            <option value="{{ $jornada->id }}">{{ $jornada->tipo }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-primary">Crear Cargo</button>
             </form>
         </div>
