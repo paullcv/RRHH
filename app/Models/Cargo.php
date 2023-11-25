@@ -19,7 +19,4 @@ class Cargo extends Model
     {
         return $this->belongsTo(Jornada::class);
     }
-
-  
-    
 }
