@@ -60,6 +60,8 @@
                                         <a href="{{ route('empleados.edit', $empleado->id) }}"
                                             class="btn btn-sm btn-primary">Editar</a>
                                         <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                        <a href="{{ route('empleados.nominas.index', $empleado->id) }}" class="btn btn-sm btn-info">Nominas</a>
+
                                     </form>
                                 </td>
                             </tr>

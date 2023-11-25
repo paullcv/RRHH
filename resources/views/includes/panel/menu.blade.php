@@ -23,13 +23,13 @@
 
     <li class="nav-item">
         <a class="nav-link " href="#">
-            <i class="fas fa-procedures text-warning"></i> Asistencia
+            <i class="fas fa-procedures text-warning"></i> Gestionar Asistencias
         </a>
     </li>
     
     <li class="nav-item">
         <a class="nav-link " href="{{ url('/horarios') }}">
-            <i class="ni ni-briefcase-24 text-blue"></i> Gestionar Horario
+            <i class="ni ni-briefcase-24 text-blue"></i> Gestionar Horarios
         </a>
     </li>
 
@@ -48,6 +48,16 @@
     <li class="nav-item">
         <a class="nav-link " href="{{ url('/cargos') }}">
             <i class="fas fa-procedures text-warning"></i> Gestionar Cargos
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link " href="{{ url('/cargos') }}">
+            <i class="fas fa-procedures text-warning"></i> Mis asistencia
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link " href="{{ url('/cargos') }}">
+            <i class="fas fa-procedures text-warning"></i> Mis nominas
         </a>
     </li>
   
