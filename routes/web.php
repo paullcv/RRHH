@@ -5,6 +5,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\JornadaController;
+use App\Http\Controllers\RequisitoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -41,3 +42,6 @@ Route::resource('horarios', HorarioController::class);
 
 //CRUD EMPLEADOS
 Route::resource('empleados', EmpleadoController::class);
+
+//Requisitos
+Route::resource('cargos.requisitos', RequisitoController::class);
