@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('cargos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->boolean('existe_vacante');
+            $table->boolean('existe_vacante')->default(false);
             $table->unsignedBigInteger('departamento_id');
             $table->foreign('departamento_id')->references('id')->on('departments')->onDelete('cascade');
             $table->unsignedBigInteger('jornada_id');

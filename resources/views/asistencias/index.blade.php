@@ -5,10 +5,7 @@
         <div class="card-header border-0">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="mb-0">Lista de Empleados</h3>
-                </div>
-                <div class="col text-right">
-                    <a href="{{ route('empleados.create') }}" class="btn btn-sm btn-primary">Nuevo Empleado</a>
+                    <h3 class="mb-0">Asistencias</h3>
                 </div>
             </div>
         </div>
@@ -22,7 +19,7 @@
                 </div>
             @endif
         </div>
-        
+
 
         @if ($empleados->isEmpty())
             <div class="alert alert-warning" role="alert">
@@ -35,12 +32,8 @@
                         <tr>
                             <th scope="col">CI</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Cargo</th>
-                            <th scope="col">Usuario</th>
-                            <th scope="col">Fecha de Nacimiento</th>
-                            <th scope="col">Sexo</th>
-                            <th scope="col">Teléfono</th>
-                            <th scope="col">Opciones</th>
+
+                            <th scope="col">Asistencias</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,21 +41,10 @@
                             <tr>
                                 <td>{{ $empleado->ci }}</td>
                                 <td>{{ $empleado->nombre }}</td>
-                                <td>{{ $empleado->cargo->nombre }}</td>
-                                <td>{{ $empleado->user->name }}</td>
-                                <td>{{ $empleado->fecha_nacimiento }}</td>
-                                <td>{{ $empleado->sexo }}</td>
-                                <td>{{ $empleado->telefono }}</td>
-                                <td>
-                                    <form action="{{ route('empleados.destroy', $empleado->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <a href="{{ route('empleados.edit', $empleado->id) }}"
-                                            class="btn btn-sm btn-primary">Editar</a>
-                                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                                        <a href="{{ route('empleados.nominas.index', $empleado->id) }}" class="btn btn-sm btn-info">Nominas</a>
 
-                                    </form>
+                                <td>
+                                    <a href="{{ route('asistencias.show', $empleado->id) }}"
+                                        class="btn btn-sm btn-primary">Ver asistencias</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -71,4 +53,5 @@
             </div>
         @endif
     </div>
+
 @endsection
