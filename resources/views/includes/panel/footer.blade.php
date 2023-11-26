@@ -8,7 +8,7 @@
         <div class="col-xl-6">
             <ul class="nav nav-footer justify-content-center justify-content-xl-end">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">¿Quienes somos?</a>
+                    <a href="{{ url('/') }}" class="nav-link">¿Quienes somos?</a>
                 </li>
             </ul>
         </div>
