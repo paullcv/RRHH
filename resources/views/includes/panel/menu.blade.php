@@ -6,7 +6,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="#">
+        <a class="nav-link " href="{{ url('/postulantes') }}">
             <i class="ni ni-briefcase-24 text-blue"></i>Gestionar Postulantes
         </a>
     </li>
@@ -26,7 +26,7 @@
             <i class="fas fa-procedures text-warning"></i> Gestionar Asistencias
         </a>
     </li>
-    
+
     <li class="nav-item">
         <a class="nav-link " href="{{ url('/horarios') }}">
             <i class="ni ni-briefcase-24 text-blue"></i> Gestionar Horarios
@@ -44,7 +44,7 @@
             <i class="ni ni-briefcase-24 text-blue"></i> Gestionar Departamentos
         </a>
     </li>
-  
+
     <li class="nav-item">
         <a class="nav-link " href="{{ url('/cargos') }}">
             <i class="fas fa-procedures text-warning"></i> Gestionar Cargos
@@ -60,8 +60,8 @@
             <i class="fas fa-procedures text-warning"></i> Mis nominas
         </a>
     </li>
-  
-  
+
+
     <li class="nav-item">
         <a class="nav-link" href="{{ route('logout') }}"
             onclick="event.preventDefault(); document.getElementById('formLogout').submit();">

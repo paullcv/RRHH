@@ -7,6 +7,7 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\JornadaController;
 use App\Http\Controllers\NominaController;
+use App\Http\Controllers\PostulanteController;
 use App\Http\Controllers\RequisitoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 
@@ -58,3 +59,6 @@ Route::resource('asistencias', AsistenciaController::class);
 Route::post('asistencias/{empleado}/marcar', [AsistenciaController::class, 'marcarAsistencia'])->name('asistencias.marcar');
 Route::post('asistencias/{empleadoId}/marcar-salida/{asistenciaId}', [AsistenciaController::class, 'marcarSalida'])->name('asistencias.marcar_salida');
 Route::get('misasistencias', [AsistenciaController::class, 'misAsistencias'])->name('asistencias.mis_asistencias');
+
+//Postulante
+Route::resource('postulantes', PostulanteController::class);
