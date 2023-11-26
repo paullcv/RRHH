@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleado;
 use App\Models\Nomina;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NominaController extends Controller
 {
@@ -114,5 +116,21 @@ class NominaController extends Controller
 
         return redirect()->route('empleados.nominas.edit', [$empleadoId, $nominaId])
             ->with('success', 'Pago confirmado exitosamente.');
+    }
+    public function myNomina()
+    {
+        $usuarioid = Auth::user()->id;
+        $empleado = Empleado::where('user_id', $usuarioid)->first();
+
+        if ($empleado) {
+            $empleadoId = $empleado->id;
+
+            $nominas = Nomina::where('empleado_id', $empleadoId)->get();
+            return view('nominas.misnominas', compact('empleado', 'nominas'));
+        } else {
+            // Manejar el caso en que no se encuentra el empleado correspondiente al usuario
+            return view('nominas.misnominas', compact('empleado'));
+        }
+       
     }
 }

@@ -51,6 +51,7 @@ Route::resource('cargos.requisitos', RequisitoController::class);
 //Nominas
 Route::resource('empleados.nominas', NominaController::class);
 Route::post('/empleados/{empleadoId}/nominas/{nominaId}/confirmar-pago', [NominaController::class, 'confirmarPago'])->name('empleados.nominas.confirmar_pago');
+Route::get('misNominas', [NominaController::class, 'myNomina']);
 
 //Asistencias
 Route::resource('asistencias', AsistenciaController::class);

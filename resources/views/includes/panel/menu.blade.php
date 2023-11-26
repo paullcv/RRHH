@@ -56,7 +56,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="{{ url('/cargos') }}">
+        <a class="nav-link " href="{{ url('/misNominas') }}">
             <i class="fas fa-procedures text-warning"></i> Mis nominas
         </a>
     </li>
