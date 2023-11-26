@@ -22,7 +22,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link " href="#">
+        <a class="nav-link " href="{{ url('/asistencias') }}">
             <i class="fas fa-procedures text-warning"></i> Gestionar Asistencias
         </a>
     </li>
@@ -51,8 +51,8 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link " href="{{ url('/cargos') }}">
-            <i class="fas fa-procedures text-warning"></i> Mis asistencia
+        <a class="nav-link" href="{{ url('/misasistencias') }}">
+            <i class="fas fa-procedures text-warning"></i> Mis asistencias
         </a>
     </li>
     <li class="nav-item">

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('fecha_asistencia');
             $table->time('hora_entrada');
-            $table->time('hora_salida');
+            $table->time('hora_salida')->nullable();
             $table->unsignedBigInteger('empleado_id');
             $table->foreign('empleado_id')->references('id')->on('empleados')->onDelete('cascade');
             $table->timestamps();

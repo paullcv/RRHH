@@ -2,63 +2,75 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Asistencia;
+use App\Models\Empleado;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AsistenciaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $empleados = Empleado::all();
+        return view('asistencias.index', compact('empleados'));
+        // $asistencias = Asistencia::all();
+        // return view('asistencias.index', compact('asistencias'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function marcarAsistencia(Request $request, $empleadoId)
     {
-        //
+        // Crear una nueva asistencia con la fecha y hora actual
+        Asistencia::create([
+            'fecha_asistencia' => Carbon::now()->toDateString(),
+            'hora_entrada' => Carbon::now()->toTimeString(),
+            'hora_salida' => null,
+            'empleado_id' => $empleadoId,
+        ]);
+
+        return redirect()->route('asistencias.show', $empleadoId)
+            ->with('success', 'Asistencia marcada correctamente.');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+
+    public function show(string $empleadoid)
     {
-        //
+        $asistencias = Asistencia::where('empleado_id', $empleadoid)->get();
+        $empleado = Empleado::findOrFail($empleadoid);
+        return view('asistencias.show', compact('asistencias', 'empleadoid', 'empleado'));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function marcarSalida($empleadoId, $asistenciaId)
     {
-        //
+        $asistencia = Asistencia::findOrFail($asistenciaId);
+
+        if ($asistencia) {
+            $asistencia->hora_salida = Carbon::now()->toTimeString();
+            $asistencia->save();
+
+            return redirect()->route('asistencias.show', $empleadoId)
+                ->with('success', 'Hora de salida marcada correctamente.');
+        } else {
+            return redirect()->route('asistencias.show', $empleadoId)
+                ->with('error', 'No se encontró una asistencia para marcar la salida.');
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function misAsistencias()
     {
-        //
-    }
+        $usuarioid = Auth::user()->id;
+        $empleado = Empleado::where('user_id', $usuarioid)->first();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        if ($empleado) {
+            $empleadoId = $empleado->id;
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+            $asistencias = Asistencia::where('empleado_id', $empleadoId)->get();
+
+            return view('asistencias.show', compact('asistencias', 'empleadoId', 'empleado'));
+        } else {
+            // Manejar el caso en que no se encuentra el empleado correspondiente al usuario
+            return view('asistencias.show', compact('empleado'));
+        }
+        
     }
 }
