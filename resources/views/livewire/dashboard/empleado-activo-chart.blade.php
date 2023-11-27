@@ -5,7 +5,7 @@
         </div>
         <div class="card-body px-3">
             <h2 class="py-4" style="display: flex; justify-content: center; font-weight: bold; color: rgb(45,206,137)">
-                Cantidad de Empleados Activos
+                Cantidad de Empleados Activos - {{$totalEmpleados}}
             </h2>
 
             <!-- Agrega esto donde quieras que aparezca el selector -->
@@ -18,7 +18,7 @@
             </div>
 
 
-            <div style="width: 100%; margin: 0 auto; padding-bottom: 25px;height: 900px;">
+            <div style="width: 100%; margin: 0 auto; padding-bottom: 25px">
                 <canvas id="horizontalBarChart" width="30%"></canvas>
             </div>
             <script>

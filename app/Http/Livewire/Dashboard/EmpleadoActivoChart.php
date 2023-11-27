@@ -40,9 +40,10 @@ class EmpleadoActivoChart extends Component
             ];
         } 
         //dd($this->data);
+        $totalEmpleados = $results->sum('total');
         $this->emitDrawPdv($data);
 
-        return view('livewire.dashboard.empleado-activo-chart', compact('data'));
+        return view('livewire.dashboard.empleado-activo-chart', compact('data','totalEmpleados'));
     }
 
     public function emitDrawPdv($data)

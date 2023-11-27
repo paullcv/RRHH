@@ -5,6 +5,7 @@
     @livewire('dashboard.porcentaje-cumplimiento-chart')
     @livewire('dashboard.empleado-activo-chart')
     @livewire('dashboard.empleado-inactivo-chart')
+    @livewire('dashboard.sexo-empleado-chart')
 @endsection
 
 @section('css')

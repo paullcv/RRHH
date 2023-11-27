@@ -40,8 +40,9 @@ class EmpleadoInactivoChart extends Component
             ];
         } 
         //dd($this->data);
+        $totalEmpleados = $results->sum('total');
         $this->emitDrawEI($data);
-        return view('livewire.dashboard.empleado-inactivo-chart',compact('data'));
+        return view('livewire.dashboard.empleado-inactivo-chart',compact('data','totalEmpleados'));
     }
 
     public function emitDrawEI($data)

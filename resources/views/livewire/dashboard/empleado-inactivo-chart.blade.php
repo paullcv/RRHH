@@ -5,7 +5,7 @@
         </div>
         <div class="card-body px-3">
             <h2 class="py-4" style="display: flex; justify-content: center; font-weight: bold; color: rgb(245,54,92)">
-                Cantidad de Empleados Inactivos
+                Cantidad de Empleados Inactivos - {{$totalEmpleados}}
             </h2>
 
             <!-- Agrega esto donde quieras que aparezca el selector -->
