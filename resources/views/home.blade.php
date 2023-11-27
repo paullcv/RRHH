@@ -3,6 +3,8 @@
 @section('content')
     @livewire('dashboard.cards-dashboard')
     @livewire('dashboard.porcentaje-cumplimiento-chart')
+    @livewire('dashboard.empleado-activo-chart')
+    @livewire('dashboard.empleado-inactivo-chart')
 @endsection
 
 @section('css')
