@@ -16,7 +16,7 @@
     <link href="{{ asset('js/plugins/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link href="{{ asset('css/argon-dashboard.css?v=1.1.2') }}" rel="stylesheet" />
-    
+    @yield('css')
 </head>
 
 <body class="">
@@ -244,6 +244,7 @@
                 application: "argon-dashboard-free"
             });
     </script>
+    @yield('js')
 </body>
 
 </html>
