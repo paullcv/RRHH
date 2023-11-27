@@ -6,53 +6,102 @@
             <h3 class="card-title">Porcentaje de Cumplimiento de Asistencias</h3>
         </div>
         <div class="card-body px-3" style="align-items: center">
-            {{-- <h1 style="display: flex;justify-content: center">{{ $this->api }}</h1> --}}
             <h2 class="py-4"
                 style="display: flex; justify-content: center ; font-weight: bold; color: rgb(75, 192, 192)">
                 Cumplimiento de Asistencias</h2>
-            {{-- <div class="row py-4">
+            <div class="row py-2">
                 <div class="col-md-3">
-                    <label>Peticion:</label>
-                    <select class="form-control" id="exampleFormControlSelect1" wire:model="api">
+                    <label for="end_date">Fecha Inicio:</label>
+                    <input class="form-control @error('end_date') is-invalid @enderror" wire:model="start_date"
+                        type="date" id="start_date" name="start_date">
+                    <div>
+                        @error('start_date')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label for="end_date">Fecha Fin:</label>
+                    <input class="form-control @error('end_date') is-invalid @enderror" wire:model="end_date"
+                        type="date" id="end_date" name="end_date">
+                    <div>
+                        @error('end_date')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div style="margin-top: 24px">
+                    @if ($conFiltroDate)
+                        <button class="btn btn-secondary my-2 mr-1" wire:click='clearDateFilters()'>Limpiar Filtros de
+                            fecha</button>
+                    @endif
+                </div>
+            </div>
+            <div class="row py-3">
+                <div class="col-md-3">
+                    <label>Departamentos:</label>
+                    <select class="form-control" id="exampleFormControlSelect1" wire:model="departamento_id"
+                        id="departamento_id" name="departamento_id">
                         <option selected value="">Todo</option>
-                        @foreach ($apis as $api)
-                        <option value="{{ $api->request }}">{{ $api->request }}</option>
+                        @foreach ($departamentos as $departamento)
+                            <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
                         @endforeach
                     </select>
+                    <div>
+                        @error('departamento_id')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
-                <div class="col-md-1">
-                    <label>Intervalo:</label>
-                    <select class="form-control" id="exampleFormControlSelect1" wire:model="interval">
-                        <option value="1">Hora</option>
-                        <option value="2">Dia</option>
-                        <option value="3">Mes</option>
+                <div class="col-md-3">
+                    <label>Cargos:</label>
+                    <select class="form-control" id="exampleFormControlSelect1" wire:model="cargo_id" id="cargo_id"
+                        name="cargo_id">
+                        <option selected value="">Todo</option>
+                        @foreach ($cargos as $cargo)
+                            <option value="{{ $cargo->id }}">{{ $cargo->nombre }}</option>
+                        @endforeach
                     </select>
+                    <div>
+                        @error('cargo_id')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
                 <div class="col-md-3">
-                    <label for="start_date">Fecha y hora Inicio:</label>
-                    <input class="form-control @error('start_date') is-invalid @enderror" wire:model="start_date"
-                        type="datetime-local" id="start_date" name="start_date">
-                    @error('start_date')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    <label>Empleados:</label>
+                    <select class="form-control" id="exampleFormControlSelect1" wire:model="empleado_id"
+                        id="empleado_id" name="empleado_id">
+                        <option selected value="">Todo</option>
+                        @foreach ($empleados as $empleado)
+                            <option value="{{ $empleado->id }}">{{ $empleado->nombre }}</option>
+                        @endforeach
+                    </select>
+                    <div>
+                        @error('empleado_id')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <label for="end_date">Fecha y hora Fin:</label>
-                    <input class="form-control @error('end_date') is-invalid @enderror" wire:model="end_date"
-                        type="datetime-local" id="end_date" name="end_date">
-                    @error('end_date')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                <div style="margin-top: 24px">
+                    @if ($conFiltroSelect)
+                        <button class="btn btn-secondary my-2 mr-1" wire:click='clearSelectFilters()'>Limpiar
+                            Selecciones</button>
+                    @endif
                 </div>
-            </div> --}}
+            </div>
             <div style="justify-content: center; display: flex">
                 <div style="margin-top: 20px; align-items: center; width: 40%">
                     <canvas id="pieChart"></canvas>
                 </div>
             </div>
-
-
-
+            <div style="display: flex;align-items: center">
+                <div style=" font-size: 15px">
+                    <p style="font-weight: bold;color: rgb(75, 192, 192);">Total de asistencias:{{ $totalAsistencias }}</p>
+                    <p style="font-weight: bold; color: rgb(141,187,37)"> Porcentaje de fechas Puntuales:{{ $avgFechaPuntual }} %</p>
+                    <p style="font-weight: bold; color: rgb(245,54,92)">Porcentaje de fechas Impuntuales:{{ $avgFechaImpuntual }} %</p>
+                </div>
+            </div>
             <script>
                 document.addEventListener('livewire:load', function() {
 
@@ -75,8 +124,8 @@
                                 borderColor: 'rgb(176,176,176)',
                                 borderWidth: 2,
                                 backgroundColor: [
-                                    'rgb(141,187,37)',
-                                    'rgb(255, 99, 132)',
+                                    'rgb(141,187,37)', //puntuales
+                                    'rgb(245,54,92)',   //impuntuales
                                 ],
                                 fill: false
                             }]
