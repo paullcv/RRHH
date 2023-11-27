@@ -28,5 +28,6 @@ class DatabaseSeeder extends Seeder
         // Empleado::factory(137)->create();
         // $this->call(AsistenciaSeeder::class);
         // $this->call(NominaSeeder::class);
+        //$this->call(UserSeeder::class);
     }
 }
