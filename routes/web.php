@@ -9,6 +9,7 @@ use App\Http\Controllers\JornadaController;
 use App\Http\Controllers\NominaController;
 use App\Http\Controllers\PostulanteController;
 use App\Http\Controllers\RequisitoController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -62,3 +63,7 @@ Route::get('misasistencias', [AsistenciaController::class, 'misAsistencias'])->n
 
 //Postulante
 Route::resource('postulantes', PostulanteController::class);
+
+//Roles
+Route::resource('roles', RoleController::class);
+Route::post('/roles/{userId}/assign', [RoleController::class, 'assignRole'])->name('roles.assign');
