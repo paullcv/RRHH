@@ -45,7 +45,9 @@
                                     {{ $department->nombre }}
                                 </td>
                                 <td>
-                                    {{ $department->descripcion }}
+                                    {{ Illuminate\Support\Str::limit($department->descripcion, 30   ) }}
+
+
                                 </td>
                                 <td>
                                     <form action="{{ route('departments.destroy', $department->id) }}" method="POST">
