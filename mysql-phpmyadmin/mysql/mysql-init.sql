@@ -1,0 +1,2 @@
+GRANT ALL PRIVILEGES ON *.* TO 'smartdata'@'%' IDENTIFIED BY 'smartdata2023';
+FLUSH PRIVILEGES;
