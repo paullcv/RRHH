@@ -21,7 +21,7 @@
 <body class="page-top">    
         <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container px-5">
-            <a class="navbar-brand" href="#page-top">TalentoTech</a>
+            <a class="navbar-brand" href="#page-top">Argon</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -59,7 +59,7 @@
     <header class="masthead text-center text-white">
         <div class="masthead-content">
             <div class="container px-5">
-                <h1 class="masthead-heading mb-0">TalentoTech</h1>
+                <h1 class="masthead-heading mb-0">Argon</h1>
                 <h2 class="masthead-subheading mb-0">Construyendo Innovación</h2>
                 <a class="btn btn-primary btn-xl rounded-pill mt-5"  href="{{ route('postulantes.create') }}">Postulate</a>
                 <a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll">Más Información</a>
@@ -102,7 +102,7 @@
                 <div class="col-lg-6">
                     <div class="p-5">
                         <h2 class="display-4">Soluciones Impulsadas por la Tecnología</h2>
-                        <p>En TalentoTech, aprovechamos la tecnología para resolver problemas complejos e impulsar la innovación en cada proyecto.</p>
+                        <p>En Argon, aprovechamos la tecnología para resolver problemas complejos e impulsar la innovación en cada proyecto.</p>
                     </div>
                 </div>
             </div>
@@ -130,7 +130,7 @@
     <!-- Footer-->
     <footer class="py-5 bg-black">
         <div class="container px-5">
-            <p class="m-0 text-center text-white small">Copyright &copy; TalentoTech 2023</p>
+            <p class="m-0 text-center text-white small">Copyright &copy; Argon 2023</p>
         </div>
     </footer>
     <!-- Bootstrap core JS-->

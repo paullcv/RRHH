@@ -1,6 +1,13 @@
 @extends('layouts.panel')
 
 @section('content')
+<script>
+  .pagination .page-link .fas {
+    font-size: 12px; /* Ajusta el tamaño según lo necesites */
+}
+
+
+</script>
     <div class="card shadow">
         <div class="card-header border-0">
             <div class="row align-items-center">
@@ -37,7 +44,7 @@
                             <th scope="col">Nombre</th>
                             <th scope="col">Cargo</th>
                             <th scope="col">Usuario</th>
-                            <th scope="col">Fecha de Nacimiento</th>
+                            {{-- <th scope="col">Fecha de Nacimiento</th> --}}
                             <th scope="col">Sexo</th>
                             <th scope="col">Teléfono</th>
                             <th scope="col">Opciones</th>
@@ -50,7 +57,7 @@
                                 <td>{{ $empleado->nombre }}</td>
                                 <td>{{ $empleado->cargo->nombre }}</td>
                                 <td>{{ $empleado->user->name }}</td>
-                                <td>{{ $empleado->fecha_nacimiento }}</td>
+                                {{-- <td>{{ $empleado->fecha_nacimiento }}</td> --}}
                                 <td>{{ $empleado->sexo }}</td>
                                 <td>{{ $empleado->telefono }}</td>
                                 <td>
@@ -66,8 +73,14 @@
                                 </td>
                             </tr>
                         @endforeach
+                      
                     </tbody>
                 </table>
+                {{-- <div class="pagination justify-content-center">
+                    {{ $empleados->links() }}
+                </div>
+                 --}}
+                {{-- {{ $empleados->links() }} --}}
             </div>
         @endif
     </div>

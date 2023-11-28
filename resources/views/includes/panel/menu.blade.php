@@ -18,7 +18,7 @@
     @if(auth()->user()->hasRole('Administrador'))
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/roles') }}">
-            <i class="ni ni-tv-2 text-danger"></i> Roles y Permisos
+            <i class="ni ni-briefcase-24 text-danger"></i> Roles y Permisos
         </a>
     </li>
     @endif
@@ -39,14 +39,14 @@
     @if(auth()->user()->hasRole('Administrador'))
     <li class="nav-item">
         <a class="nav-link " href="{{ url('/cargos') }}">
-            <i class="fas fa-procedures text-warning"></i> Gestionar Cargos
+            <i class="ni ni-briefcase-24 text-warning"></i> Gestionar Cargos
         </a>
     </li>
     @endif
     @if(auth()->user()->hasRole('Administrador'))
     <li class="nav-item">
         <a class="nav-link " href="{{ url('/asistencias') }}">
-            <i class="fas fa-procedures text-warning"></i> Gestionar Asistencias
+            <i class="ni ni-briefcase-24 text-warning"></i> Gestionar Asistencias
         </a>
     </li>
     @endif
@@ -74,12 +74,12 @@
     @if(auth()->user()->hasAnyRole(['Administrador', 'Empleado']))
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/misasistencias') }}">
-            <i class="fas fa-procedures text-warning"></i> Mis asistencias
+            <i class="ni ni-briefcase-24 text-warning"></i> Mis asistencias
         </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/misNominas') }}">
-            <i class="fas fa-procedures text-warning"></i> Mis nominas
+            <i class="ni ni-briefcase-24 text-warning"></i> Mis nominas
         </a>
     </li>
     @endif
