@@ -20,12 +20,12 @@ services:
       - sw2-network
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
+    image: phpmyadmin/phpmyadmin:5.2.1
     container_name: phpmyadmin
     hostname: phpmyadmin
     restart: always
     ports:
-      - 8080:80
+      - 8081:80
     environment:
       - UPLOAD_LIMIT=100M
     volumes:
@@ -48,10 +48,10 @@ services:
       - mysql
     hostname: rrhh
     ports:
-      - 8000:8000
+      - 8080:80
       - 5173:5173
-    volumes:
-      - ./:/var/www/html/:rw
+    #volumes:
+    #  - ./:/var/www/html/:rw
     networks:
       - sw2-network
 
