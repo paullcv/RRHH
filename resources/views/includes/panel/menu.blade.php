@@ -64,6 +64,13 @@
         </a>
     </li>
     @endif
+    @if(auth()->user()->hasRole('Administrador'))
+    <li class="nav-item">
+        <a class="nav-link "  href="{{ route('register') }}">
+            <i class="ni ni-briefcase-24 text-blue"></i> Registro Usuario
+        </a>
+    </li>
+    @endif
     @if(auth()->user()->hasAnyRole(['Administrador', 'Empleado']))
     <li class="nav-item">
         <a class="nav-link" href="{{ url('/misasistencias') }}">
@@ -86,7 +93,7 @@
         </form>
     </li>
 </ul>
-<!-- Divider -->
+{{-- <!-- Divider -->
 <hr class="my-3">
 <!-- Heading -->
 <h6 class="navbar-heading text-muted">Reportes</h6>
@@ -101,4 +108,4 @@
         <a class="nav-link" href="">
             <i class="far fa-chart-bar text-blue"></i> Reportes Ganancias
         </a>
-    </li>
+    </li> --}}

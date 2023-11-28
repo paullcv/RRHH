@@ -46,7 +46,7 @@
                     <a href="{{ route('login') }}" class="nav-link">Iniciar sesión</a>
     
                     @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="nav-link">Registro</a>
+                    {{-- <a href="{{ route('register') }}" class="nav-link">Registro</a> --}}
                     @endif
                     @endauth
                 </div>
