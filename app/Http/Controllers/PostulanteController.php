@@ -21,18 +21,37 @@ class PostulanteController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {     
+
         $request->validate([
             'nombre' => 'required',
             'edad' => 'required|integer',
             'telefono' => 'required',
             'email' => 'required|email|unique:postulantes',
-            'curriculum' => 'required',
+            'curriculum' => 'required|mimes:pdf', // Asegura que solo se acepten archivos PDF
             'cargo_id' => 'required|exists:cargos,id',
         ]);
-
-        Postulante::create($request->all());
+    
+        // Guardar el archivo en el servidor
+        $archivoCurriculum = $request->file('curriculum');
+        $foldername = 'CV';
+        $nombreArchivo = time() . '_' . $archivoCurriculum->getClientOriginalName(); // Nombre único para el archivo
+        $rutaArchivo = $archivoCurriculum->storeAs($foldername, $nombreArchivo, 'public'); // Cambia 'ruta_deseada' por la ubicación deseada en tu servidor
+    
+        // Crear el postulante y almacenar el nombre del archivo en el campo 'curriculum'
+        $postulante = new Postulante([
+            'nombre' => $request->input('nombre'),
+            'edad' => $request->input('edad'),
+            'telefono' => $request->input('telefono'),
+            'email' => $request->input('email'),
+            'cargo_id' => $request->input('cargo_id'),
+            'curriculum' => $nombreArchivo, // Guarda el nombre del archivo en la base de datos
+        ]);
+    
+        $postulante->save();
+    
         return redirect()->route('welcome')->with('success', 'Postulante creado exitosamente');
+    
     }
 
     public function show(Postulante $postulante)

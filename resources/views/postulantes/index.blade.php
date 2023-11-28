@@ -50,7 +50,7 @@
                                 <td>{{ $postulante->email }}</td>
                                 <td>
                                     @if ($postulante->curriculum)
-                                        <a href="{{ asset('ruta/del/curriculum/' . $postulante->curriculum) }}" target="_blank">Ver currículum</a>
+                                    <a href="{{ asset('storage/CV/' . $postulante->curriculum) }}" target="_blank">Ver currículum</a>
                                     @else
                                         No adjuntado
                                     @endif

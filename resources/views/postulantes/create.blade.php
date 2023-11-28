@@ -45,11 +45,21 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    @if ($errors->any())
+                    {{-- @if ($errors->any())
                         <div class="alert alert-danger" role="alert">
                             <strong>Error:</strong> Por favor, corrige los errores en el formulario.
                         </div>
-                    @endif
+                    @endif --}}
+                    @if (count($errors) > 0)
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Error:</strong> Por favor, corrige los siguientes errores.
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
         
                     <form action="{{ route('postulantes.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -78,6 +88,8 @@
                             <label for="curriculum">Currículum:</label>
                             <input type="file" name="curriculum" class="form-control-file" required>
                         </div>
+                      
+
         
                         <div class="form-group">
                             <label for="cargo_id">Cargo:</label>
