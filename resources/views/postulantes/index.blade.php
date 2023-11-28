@@ -9,6 +9,8 @@
                 </div>
                 <div class="col text-right">
                     <a href="{{ route('postulantes.create') }}" class="btn btn-sm btn-primary">Nuevo Postulante</a>
+                    <a href="{{ route('recibir.datos.api') }}" class="btn btn-sm btn-primary">Resultasdos CV</a>
+
                 </div>
             </div>
         </div>
