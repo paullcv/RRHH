@@ -55,12 +55,15 @@
                                         No adjuntado
                                     @endif
                                 </td>
+
                                 <td>{{ $postulante->cargo->nombre }}</td>
                                 <td>
                                     <form action="{{ route('postulantes.destroy', $postulante->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <a href="{{ route('postulantes.edit', $postulante->id) }}" class="btn btn-sm btn-primary">Editar</a>
+                                        <a href="{{ route('enviar.datos.api', $postulante->id) }}" class="btn btn-sm btn-primary">Analizar CV</a>
+                                        
                                         <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                                     </form>
                                 </td>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\IA_microservicio;
 use App\Http\Controllers\AsistenciaController;
 use App\Http\Controllers\CargoController;
 use App\Http\Controllers\DepartmentController;
@@ -67,3 +68,7 @@ Route::resource('postulantes', PostulanteController::class);
 //Roles
 Route::resource('roles', RoleController::class);
 Route::post('/roles/{userId}/assign', [RoleController::class, 'assignRole'])->name('roles.assign');
+
+//microservicio IA
+Route::get('/recibir-datos', [IA_microservicio::class, 'recibirDatosAPI'])->name('recibir.datos.api');
+Route::get('/enviar-datos/{id}', [PostulanteController::class, 'enviarDatosAPI'])->name('enviar.datos.api');
