@@ -8,11 +8,14 @@ use App\Models\User;
 use App\Models\Department;
 use Illuminate\Validation\Rule;
 
+
 class EmpleadoController extends Controller
 {
     public function index()
     {
         $empleados = Empleado::all();
+        // $empleados = Empleado::paginate(10);
+        
         return view('empleados.index', compact('empleados'));
     }
 

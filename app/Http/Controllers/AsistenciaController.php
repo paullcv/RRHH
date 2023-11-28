@@ -35,7 +35,10 @@ class AsistenciaController extends Controller
 
     public function show(string $empleadoid)
     {
-        $asistencias = Asistencia::where('empleado_id', $empleadoid)->get();
+        // $asistencias = Asistencia::where('empleado_id', $empleadoid)->get();
+        $asistencias = Asistencia::where('empleado_id', $empleadoid)
+             ->orderBy('created_at', 'desc')->get();
+
         $empleado = Empleado::findOrFail($empleadoid);
         return view('asistencias.show', compact('asistencias', 'empleadoid', 'empleado'));
     }
